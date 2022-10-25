@@ -24,10 +24,7 @@
     <DocumentationFile>..\..\bin\BlackMali.StateMachine.xml</DocumentationFile>
     <PackageIcon>blackmali.png</PackageIcon>
     <Version>$(AssemblyVersion)</Version>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-    <IncludeSymbols>True</IncludeSymbols>
-    
+    <IncludeSymbols>True</IncludeSymbols>    
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\.github\blackmali.png">
