@@ -16,10 +16,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Title>$(AssemblyName)</Title>
     <Authors>BlackMali</Authors>
-    <Company />
     <Copyright>BlackMali</Copyright>
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
-    <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>..\..\bin\BlackMali.StateMachine.xml</DocumentationFile>
     <PackageIcon>blackmali.png</PackageIcon>
