@@ -23,6 +23,10 @@
     <Version>$(AssemblyVersion)</Version>
     <IncludeSymbols>True</IncludeSymbols>    
   </PropertyGroup>
+  <PropertyGroup>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\.github\blackmali.png">
       <Pack>True</Pack>
