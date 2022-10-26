@@ -1,6 +1,8 @@
 ﻿using Autofac.Extras.Moq;
 using BlackMali.StateMachine.Tests.Login;
 using Xunit;
+using System;
+using System.Threading.Tasks;
 
 namespace BlackMali.StateMachine.Tests
 {
@@ -13,6 +15,8 @@ namespace BlackMali.StateMachine.Tests
 			_container = AutoMock.GetLoose();
 		}
 
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+
 		[Fact]
 		public async Task InspectExceptionTest1()
 		{
@@ -23,6 +27,8 @@ namespace BlackMali.StateMachine.Tests
 			await Assert.ThrowsAsync<ArgumentNullException>(() => inspector.Inspect(null, new UserNameState()));
 			await Assert.ThrowsAsync<ArgumentNullException>(() => inspector.Inspect(context.Object, null));
 		}
+
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
 		[Fact]
 		public async Task InspectTest()

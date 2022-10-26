@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Simple state machine with DI and async support</Description>
@@ -19,7 +19,7 @@
     <Copyright>BlackMali</Copyright>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>..\..\bin\BlackMali.StateMachine.xml</DocumentationFile>
-    <PackageIcon>blackmali.png</PackageIcon>
+    <PackageIcon>blackmali.jpg</PackageIcon>
     <Version>$(AssemblyVersion)</Version>
     <IncludeSymbols>True</IncludeSymbols>    
   </PropertyGroup>
@@ -28,7 +28,7 @@
     <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\.github\blackmali.png">
+    <None Include="..\..\.github\blackmali.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

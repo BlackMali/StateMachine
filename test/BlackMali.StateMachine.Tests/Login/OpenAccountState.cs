@@ -1,4 +1,7 @@
-﻿namespace BlackMali.StateMachine.Tests.Login
+﻿using System;
+using System.Threading.Tasks;
+
+namespace BlackMali.StateMachine.Tests.Login
 {
     internal class OpenAccountState : State
 	{

@@ -1,6 +1,8 @@
 ﻿using Autofac.Extras.Moq;
 using BlackMali.StateMachine.Tests.Login;
 using Xunit;
+using System;
+using System.Collections.Generic;
 
 namespace BlackMali.StateMachine.Tests
 {

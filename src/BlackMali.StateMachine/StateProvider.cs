@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 namespace BlackMali.StateMachine
 {
 	/// <inheritdoc/>
-	internal class StateProvider : IStateProvider
+	public class StateProvider : IStateProvider
 	{
 		private readonly ConcurrentDictionary<Type, IState> _states;
 
+		/// <inheritdoc/>
 		public StateProvider()
 		{
 			_states = new ConcurrentDictionary<Type, IState>();

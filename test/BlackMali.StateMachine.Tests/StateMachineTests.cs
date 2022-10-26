@@ -1,6 +1,8 @@
 ﻿using Autofac.Extras.Moq;
 using BlackMali.StateMachine.Tests.Login;
 using Xunit;
+using System;
+using System.Threading.Tasks;
 
 namespace BlackMali.StateMachine.Tests
 {
@@ -12,6 +14,8 @@ namespace BlackMali.StateMachine.Tests
 		{
 			_container = AutoMock.GetLoose();
 		}
+
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
 
 		[Fact]
 		public void ConstructorTest()
@@ -29,7 +33,7 @@ namespace BlackMali.StateMachine.Tests
 		[Fact]
 		public async Task TransmitWithEventExceptionTest()
 		{
-			var builder = new StateMachineBuilder();
+			var builder = new StateMachineBuilder(new StateMachineConfig(), new StateProvider(), ServiceFactory.GetServiceFactory);
 			builder.AddState(new UserNameState());
 
 			var machine = builder.Build();
@@ -40,7 +44,7 @@ namespace BlackMali.StateMachine.Tests
 		[Fact]
 		public async Task TransmitExceptionTest1()
 		{
-			var builder = new StateMachineBuilder();
+			var builder = new StateMachineBuilder(new StateMachineConfig(), new StateProvider(), ServiceFactory.GetServiceFactory);
 			builder.AddState(new UserNameState());
 			
 			var machine = builder.Build();
@@ -49,6 +53,8 @@ namespace BlackMali.StateMachine.Tests
 
 			await Assert.ThrowsAsync<StateMachineException>(() => machine.Transmit<PasswordState>(null));
 		}
+
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
 		[Fact]
 		public async Task TransmitExceptionTest2()

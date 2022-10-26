@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace BlackMali.StateMachine
 {
 	/// <summary>
-	/// Default state machine
+	/// State machine
 	/// </summary>
 	internal class StateMachine : IStateMachine
 	{
@@ -12,7 +12,7 @@ namespace BlackMali.StateMachine
 		private readonly IStateChangeInspector _inspector;
 
 		/// <summary>
-		/// Default state machine
+		/// State machine
 		/// </summary>
 		public StateMachine(StateMachineContext context, IStateChangeInspector inspector)
 		{
@@ -20,10 +20,13 @@ namespace BlackMali.StateMachine
 			_inspector = inspector ?? throw new ArgumentNullException(nameof(inspector));
 		}
 
+		/// <inheritdoc/>
 		public IState? State => _context.State;
 
+		/// <inheritdoc/>
 		public event EventHandler<StateChangeEventArgs>? OnBeforeStateMethod;
 
+		/// <inheritdoc/>
 		public event EventHandler<StateChangeEventArgs>? OnAfterTransmitted;
 
 		/// <inheritdoc/>

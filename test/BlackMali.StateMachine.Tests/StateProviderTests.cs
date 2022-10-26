@@ -1,11 +1,15 @@
-﻿using BlackMali.StateMachine;
-using BlackMali.StateMachine.Tests.Login;
+﻿using BlackMali.StateMachine.Tests.Login;
 using Xunit;
+using System;
+using System.Threading.Tasks;
 
 namespace BlackMali.StateMachine.Tests
 {
     public class StateProviderTests
 	{
+
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+
 		[Fact]
 		public async Task GetStateTest()
 		{
@@ -22,5 +26,8 @@ namespace BlackMali.StateMachine.Tests
 
 			Assert.Throws<ArgumentNullException>(() => provider.SetState<IState>(null));
 		}
+
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+
 	}
 }

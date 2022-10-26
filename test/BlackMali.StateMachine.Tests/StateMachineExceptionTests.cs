@@ -1,5 +1,7 @@
 ﻿using Castle.Core.Internal;
 using Xunit;
+using System;
+using System.Linq;
 
 namespace BlackMali.StateMachine.Tests
 {
@@ -30,7 +32,12 @@ namespace BlackMali.StateMachine.Tests
 			var parameterless = constructors.FirstOrDefault(c => c.GetParameters().Length == 0);
 			Assert.NotNull(parameterless);
 
+			// Null check with Assert.NotNull
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
 			parameterless.Invoke(null);
+
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 		}
 	}
 }

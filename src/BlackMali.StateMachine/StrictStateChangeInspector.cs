@@ -4,8 +4,17 @@ using System.Threading.Tasks;
 
 namespace BlackMali.StateMachine
 {
-	internal class StrictStateChangeInspector : IStateChangeInspector
+	/// <summary>
+	/// Inspector with state change validation
+	/// </summary>
+	public class StrictStateChangeInspector : IStateChangeInspector
 	{
+		/// <summary>
+		/// Inspector with state change validation
+		/// </summary>
+		public StrictStateChangeInspector()
+		{ }
+
 		/// <inheritdoc/>
 		public async Task Inspect(IStateMachineContext context, IState nextState)
 		{

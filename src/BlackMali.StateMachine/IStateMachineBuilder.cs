@@ -14,10 +14,11 @@
 			where TState : IState;
 
 		/// <summary>
-		/// Set the strict mode
+		/// Adds a state
 		/// </summary>
 		/// <returns>The state machine builder for fluent pattern</returns>
-		IStateMachineBuilder UseStrictMode();		
+		ITransitionBuilder AddState<TState>()
+			where TState : class, IState;
 
 		/// <summary>
 		/// Creates a state machine

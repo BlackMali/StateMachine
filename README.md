@@ -10,10 +10,11 @@ Simple state machine implementation in C# (.NET 6).
 **Advantages:**
 - DI ready
 - Async Pattern
+- Safe programming with nullable types
 - Works without constants and enums
 - Builder for state machine creation
 - Configuration of states and transitions
-- Strict and open transitions
+- Strict (default) and open transitions
 - more than 95% code coverage
 
 ## NuGet
@@ -30,23 +31,29 @@ Or via the .NET Core command line interface:
 ## Configuration
 
 ```csharp
-var builder = new StateMachineBuilder()
-	.UseStrictMode();
+public class SlotMachine
+{
+	private readonly IStateMachine _stateMachine;
 
-builder.AddBeginState(new LockState())
-	.AddStartTransition();
-	.AddInStateTransition()
-	.AddTransition<UnLockState>()
-	.AddTransition<EndState>();
+	public SlotMachine(IStateMachineBuilder builder)
+	{
+		// With registration -> AddState<LockState>()
+		builder.AddState<LockState>()
+			.AddStartTransition();
+			.AddInStateTransition()
+			.AddTransition<UnLockState>()
+			.AddTransition<EndState>();
 
-builder.AddState(new UnLockState())
-	.AddInStateTransition()
-	.AddTransition<LockState>()
-	.AddTransition<EndState>();
+		// Without registration -> AddState(new UnLockState())
+		builder.AddState(new UnLockState())
+			.AddInStateTransition()
+			.AddTransition<LockState>()
+			.AddTransition<EndState>();
 
-// Create state machine
-var machine = builder.Build();
-
+		// Create state machine
+		_stateMachine = builder.Build();
+	}
+}
 ```
 
 ## State change

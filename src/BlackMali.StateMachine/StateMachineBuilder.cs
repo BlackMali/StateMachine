@@ -9,22 +9,27 @@ namespace BlackMali.StateMachine
 	{
 		private readonly IStateMachineConfig _machineConfig;
 		private readonly IStateProvider _stateProvider;
-		private bool _useStrictMode;
+		private readonly StateMachineServiceFactory _serviceFactory;
 
 		/// <summary>
 		/// Builder for state machines
 		/// </summary>
-		public StateMachineBuilder()
-			: this (new StateMachineConfig(), new StateProvider())
-		{ }
-
-		/// <summary>
-		/// Builder for state machines
-		/// </summary>
-		public StateMachineBuilder(IStateMachineConfig machineConfig, IStateProvider stateProvider)
+		public StateMachineBuilder(IStateMachineConfig machineConfig, IStateProvider stateProvider, StateMachineServiceFactory serviceFactory)
 		{
 			_machineConfig = machineConfig ?? throw new ArgumentNullException(nameof(machineConfig));
 			_stateProvider = stateProvider ?? throw new ArgumentNullException(nameof(stateProvider));
+			_serviceFactory = serviceFactory ?? throw new ArgumentNullException(nameof(serviceFactory));
+		}
+
+		/// <inheritdoc/>
+		public ITransitionBuilder AddState<TState>() where TState : class, IState
+		{
+			var type = typeof(TState);
+			var state = _serviceFactory(type) as TState;
+			if (state == null)
+				throw new StateMachineException($"The Type [{type}] could not be resolved.");
+
+			return AddState(state);
 		}
 
 		/// <inheritdoc/>
@@ -42,19 +47,11 @@ namespace BlackMali.StateMachine
 		}
 
 		/// <inheritdoc/>
-		public IStateMachineBuilder UseStrictMode()
-		{
-			_useStrictMode = true;
-
-			return this;
-		}
-
-		/// <inheritdoc/>
 		public IStateMachine Build()
 		{
-			IStateChangeInspector inspector = new StateChangeInspector();
-			if (_useStrictMode)
-				inspector = new StrictStateChangeInspector();
+			var inspector = _serviceFactory(typeof(IStateChangeInspector)) as IStateChangeInspector;
+			if (inspector == null)
+				throw new StateMachineException($"[{nameof(IStateChangeInspector)} could not be resolved.");
 
 			var context = new StateMachineContext(_machineConfig, _stateProvider);
 

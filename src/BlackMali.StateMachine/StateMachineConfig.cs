@@ -6,8 +6,11 @@ namespace BlackMali.StateMachine
 	/// <summary>
 	/// Implementation for the state machine configuration
 	/// </summary>
-	internal class StateMachineConfig : IStateMachineConfig
+	public class StateMachineConfig : IStateMachineConfig
 	{
+		/// <summary>
+		/// Implementation for the state machine configuration
+		/// </summary>
 		public StateMachineConfig()
 		{
 			States = new List<Type>();

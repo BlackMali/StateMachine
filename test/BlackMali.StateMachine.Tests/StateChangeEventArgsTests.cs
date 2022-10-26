@@ -1,5 +1,6 @@
 ﻿using Autofac.Extras.Moq;
 using BlackMali.StateMachine.Tests.Login;
+using System;
 using Xunit;
 
 namespace BlackMali.StateMachine.Tests
@@ -38,6 +39,7 @@ namespace BlackMali.StateMachine.Tests
 			Assert.Equal(typeof(PasswordState), eventArgs.CurrentState?.GetType());
 			Assert.Equal(typeof(OpenAccountState), eventArgs.NextState?.GetType());
 			Assert.Equal(typeof(StateChangeEventArgsTests), eventArgs.StateType);
+			Assert.Equal(context, eventArgs.Context);
 			Assert.Equal("test2345798zt4e3t", eventArgs.MethodName);
 
 		}

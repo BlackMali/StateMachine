@@ -11,9 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		.github\blackmali.png = .github\blackmali.png
+		.github\blackmali.jpg = .github\blackmali.jpg
 		BlackMali.StateMachine.snk = BlackMali.StateMachine.snk
 		LICENSE.txt = LICENSE.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackMali.StateMachine.Autofac", "src\BlackMali.StateMachine.Autofac\BlackMali.StateMachine.Autofac.csproj", "{5D5C05B4-5109-4D12-89A3-9E95E6C74E38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMali.StateMachine.Autofac.Test", "test\BlackMali.StateMachine.Autofac.Test\BlackMali.StateMachine.Autofac.Test.csproj", "{5C826BC3-D34E-4377-BF40-699D88B0EC79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{BA85883E-A423-4156-9144-FAB3A6636536}"
+	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -31,6 +39,14 @@ Global
 		{0FBA056F-9F59-404C-BF24-86236880860B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FBA056F-9F59-404C-BF24-86236880860B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FBA056F-9F59-404C-BF24-86236880860B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D5C05B4-5109-4D12-89A3-9E95E6C74E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5C05B4-5109-4D12-89A3-9E95E6C74E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5C05B4-5109-4D12-89A3-9E95E6C74E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5C05B4-5109-4D12-89A3-9E95E6C74E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C826BC3-D34E-4377-BF40-699D88B0EC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C826BC3-D34E-4377-BF40-699D88B0EC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C826BC3-D34E-4377-BF40-699D88B0EC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C826BC3-D34E-4377-BF40-699D88B0EC79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
