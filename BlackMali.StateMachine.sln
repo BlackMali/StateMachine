@@ -22,6 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackMali.StateMachine.Auto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{BA85883E-A423-4156-9144-FAB3A6636536}"
 	ProjectSection(SolutionItems) = preProject
+		doc\DI.md = doc\DI.md
 		README.md = README.md
 	EndProjectSection
 EndProject

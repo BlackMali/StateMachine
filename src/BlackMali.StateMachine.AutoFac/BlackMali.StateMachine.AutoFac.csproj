@@ -5,7 +5,7 @@
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Simple state machine with DI and async support</Description>
-    <PackageTags>statemachine</PackageTags>
+    <PackageTags>statemachine;autofac</PackageTags>
     <BaseOutputPath>..\..\bin</BaseOutputPath>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\BlackMali.StateMachine.Private.snk</AssemblyOriginatorKeyFile>
@@ -23,6 +23,10 @@
     <PackageIcon>blackmali.jpg</PackageIcon>
     <Version>$(AssemblyVersion)</Version>
     <IncludeSymbols>True</IncludeSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
   </PropertyGroup>
 
   <ItemGroup>

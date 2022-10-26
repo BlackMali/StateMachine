@@ -21,11 +21,11 @@ Simple state machine implementation in C# (.NET 6).
 
 You should install BlackMali.StateMachine with NuGet:
 	
-	Install-Package BlackMali.StateMachine
+	Install-Package BlackMali.StateMachine.Autofac
 
 Or via the .NET Core command line interface:
 
-	dotnet add package BlackMali.StateMachine
+	dotnet add package BlackMali.StateMachine.Autofac
 
 
 ## Configuration
