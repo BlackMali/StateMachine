@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <Description>Simple state machine with DI and async support</Description>
+    <PackageTags>statemachine</PackageTags>
+    <BaseOutputPath>..\..\bin</BaseOutputPath>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\BlackMali.StateMachine.Private.snk</AssemblyOriginatorKeyFile>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/BlackMali/StateMachine</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Title>$(AssemblyName)</Title>
+    <Authors>BlackMali</Authors>
+    <Copyright>BlackMali</Copyright>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>..\..\bin\BlackMali.StateMachine.xml</DocumentationFile>
+    <PackageIcon>blackmali.jpg</PackageIcon>
+    <Version>$(AssemblyVersion)</Version>
+    <IncludeSymbols>True</IncludeSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\.github\blackmali.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlackMali.StateMachine\BlackMali.StateMachine.csproj" />
+  </ItemGroup>
+
+</Project>
