@@ -11,11 +11,23 @@ namespace BlackMali.StateMachine
 		/// <summary>
 		/// Dictionary with all states
 		/// </summary>
-		public IList<Type> States { get; }
+		public IReadOnlyList<Type> States { get; }
 
 		/// <summary>
 		/// List with all transitions
 		/// </summary>
-		public IList<StateMachineTransition> Transitions { get; }
+		public IReadOnlyList<StateMachineTransition> Transitions { get; }
+
+		/// <summary>
+		/// Adds a state
+		/// </summary>
+		/// <param name="type">The type of state</param>
+		public void AddState(Type type);
+
+		/// <summary>
+		/// Adds a transition
+		/// </summary>
+		/// <param name="transition">The transition</param>
+		public void AddTransition(StateMachineTransition transition);
 	}
 }

@@ -39,7 +39,7 @@ namespace BlackMali.StateMachine
 			if (state is null)
 				throw new ArgumentNullException(nameof(state));
 
-			_machineConfig.States.Add(state.GetType());
+			_machineConfig.AddState(state.GetType());
 
 			_stateProvider.SetState(state);
 

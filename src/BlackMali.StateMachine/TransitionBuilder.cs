@@ -21,7 +21,7 @@ namespace BlackMali.StateMachine
 			if (_currentState == null)
 				throw new StateMachineException("No current state set.");
 
-			_config.Transitions.Add(new StateMachineTransition(null, _currentState.GetType()));
+			_config.AddTransition(new StateMachineTransition(null, _currentState.GetType()));
 
 			return this;
 		}
@@ -30,7 +30,7 @@ namespace BlackMali.StateMachine
 		public ITransitionBuilder AddTransition<TState>() 
 			where TState : IState
 		{
-			_config.Transitions.Add(new StateMachineTransition(_currentState?.GetType(), typeof(TState)));
+			_config.AddTransition(new StateMachineTransition(_currentState?.GetType(), typeof(TState)));
 
 			return this;
 		}
@@ -42,7 +42,7 @@ namespace BlackMali.StateMachine
 				throw new StateMachineException("In-State-Transitions not allowed for start states.");
 
 			var currentStateType = _currentState.GetType();
-			_config.Transitions.Add(new StateMachineTransition(currentStateType, currentStateType));
+			_config.AddTransition(new StateMachineTransition(currentStateType, currentStateType));
 
 			return this;
 		}

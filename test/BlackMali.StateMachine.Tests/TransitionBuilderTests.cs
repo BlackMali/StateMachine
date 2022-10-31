@@ -3,6 +3,7 @@ using BlackMali.StateMachine.Tests.Login;
 using Xunit;
 using System;
 using System.Collections.Generic;
+using Moq;
 
 namespace BlackMali.StateMachine.Tests
 {
@@ -34,8 +35,8 @@ namespace BlackMali.StateMachine.Tests
 		{
 			var transitions = new List<StateMachineTransition>();
 			var config = _container.Mock<IStateMachineConfig>();
-			config.Setup(c => c.Transitions)
-				.Returns(transitions);
+			config.Setup(c => c.AddTransition(It.IsAny<StateMachineTransition>()))
+				.Callback((StateMachineTransition transition) => transitions.Add(transition));
 
 			var builder = new TransitionBuilder(config.Object, new UserNameState())
 				.AddInStateTransition();
@@ -50,8 +51,8 @@ namespace BlackMali.StateMachine.Tests
 		{
 			var transitions = new List<StateMachineTransition>();
 			var config = _container.Mock<IStateMachineConfig>();
-			config.Setup(c => c.Transitions)
-				.Returns(transitions);
+			config.Setup(c => c.AddTransition(It.IsAny<StateMachineTransition>()))
+				.Callback((StateMachineTransition transition) => transitions.Add(transition));
 
 			var builder = new TransitionBuilder(config.Object, new UserNameState())
 				.AddTransition<PasswordState>();
@@ -69,8 +70,8 @@ namespace BlackMali.StateMachine.Tests
 		{
 			var transitions = new List<StateMachineTransition>();
 			var config = _container.Mock<IStateMachineConfig>();
-			config.Setup(c => c.Transitions)
-				.Returns(transitions);
+			config.Setup(c => c.AddTransition(It.IsAny<StateMachineTransition>()))
+				.Callback((StateMachineTransition transition) => transitions.Add(transition));
 
 			var builder = new TransitionBuilder(config.Object, null);
 
