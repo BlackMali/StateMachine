@@ -30,6 +30,9 @@ namespace BlackMali.StateMachine
 		public event EventHandler<StateChangeEventArgs>? OnAfterTransmitted;
 
 		/// <inheritdoc/>
+		public event EventHandler<StateErrorEventArgs>? OnError;
+
+		/// <inheritdoc/>
 		public async Task Transmit<TState>()
 		{
 			await Transmit<TState>(new StateMachineEvent());
@@ -44,11 +47,61 @@ namespace BlackMali.StateMachine
 		}
 
 		/// <inheritdoc/>
+		public async Task<bool> TryTransmit<TState>()
+		{
+			return await TryTransmit<TState>(new StateMachineEvent());
+		}
+
+		/// <inheritdoc/>
+		public async Task<bool> TryTransmit<TState>(StateMachineEvent @event)
+		{
+			try
+			{
+				await Transmit<TState>(@event);
+
+				return true;
+			}
+			catch (Exception ex)
+			{
+				if (OnError != null)
+					OnError(this, new StateErrorEventArgs(typeof(TState), ex));
+
+				return false;
+			}
+		}
+
+		/// <inheritdoc/>
+		public async Task Post(StateMachineEvent @event)
+		{
+			if (State == null)
+				throw new StateMachineException("Posting not possible. No current state set.");
+
+			await CallOnTransmitMethod(State, @event);
+		}
+
+		/// <inheritdoc/>
+		public async Task<bool> TryPost(StateMachineEvent @event)
+		{
+			try
+			{
+				await Post(@event);
+
+				return true;
+			}
+			catch (Exception ex)
+			{
+				if (OnError != null)
+					OnError(this, new StateErrorEventArgs(State?.GetType(), ex));
+
+				return false;
+			}
+		}
+
 		protected async Task Transmit(IState state, StateMachineEvent @event)
 		{
 			if (state is null)
 				throw new ArgumentNullException(nameof(state));
-			
+
 			if (@event is null)
 				throw new ArgumentNullException(nameof(@event));
 
@@ -69,35 +122,43 @@ namespace BlackMali.StateMachine
 
 			await _context.NextState.OnEnter(_context);
 
-			_context.LastState = _context.State;
-			_context.State = state;
-			_context.NextState = null;
+			var lastState = _context.LastState;
+			var currentState = _context.State;
 
-			await CallOnTransmitMethod(@event);
+			try
+			{
+				_context.LastState = _context.State;
+				_context.State = state;
+				_context.NextState = null;
+
+				await CallOnTransmitMethod(state, @event);
+			}
+			catch
+			{
+				// restore states
+				_context.LastState = lastState;
+				_context.State = currentState;
+				throw;
+			}
 		}
 
-		public async Task Post(StateMachineEvent @event)
+		protected async Task CallOnTransmitMethod(IState state, StateMachineEvent @event)
 		{
-			await CallOnTransmitMethod(@event);
-		}
-
-		protected async Task CallOnTransmitMethod(StateMachineEvent @event)
-		{
-			if (_context.State == null)
-				throw new StateMachineException("No status set in the status machine");
-
+			if (state is null)
+				throw new ArgumentNullException(nameof(state));
+			
 			if (OnBeforeStateMethod != null)
-				OnBeforeStateMethod(this, new StateChangeEventArgs(_context, _context.State.GetType(), nameof(IState.OnTransmitted)));
+				OnBeforeStateMethod(this, new StateChangeEventArgs(_context, state.GetType(), nameof(IState.OnTransmitted)));
 
-			var nextState = await _context.State.OnTransmitted(_context, @event);
+			var nextState = await state.OnTransmitted(_context, @event);
 
 			if (OnAfterTransmitted != null)
-				OnAfterTransmitted(this, new StateChangeEventArgs(_context, _context.State.GetType(), nameof(IState.OnTransmitted)));
+				OnAfterTransmitted(this, new StateChangeEventArgs(_context, state.GetType(), nameof(IState.OnTransmitted)));
 
 			if (nextState == null)
 				return;
 
 			await Transmit(nextState, @event);
-		}
+		}		
 	}
 }

@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/blackmali/statemachine)
 [![NuGet](https://img.shields.io/nuget/dt/BlackMali.StateMachine.svg)](https://www.nuget.org/packages/BlackMali.StateMachine) 
 
-Simple state machine implementation in C# (.NET 6).
+Simple state machine implementation in C# (.NET Standard 2.0 & .NET 6).
 
 **Advantages:**
 - DI ready
@@ -27,6 +27,12 @@ Or via the .NET Core command line interface:
 
 	dotnet add package BlackMali.StateMachine.Autofac
 
+## Registration
+### Autofac
+```csharp
+var builder = new ContainerBuilder();
+builder.RegisterModule<StateMachineModule>();
+```
 
 ## Configuration
 
@@ -60,15 +66,27 @@ public class SlotMachine
 
 ```csharp
 
+// Perform state change
 await machine.Transmit<LockState>();
 
-// OR with Event
-
+// Or with Event
 await machine.Transmit<LockState>(new StateMachineEvent());
 
-// Posts an event to the current status
+// Or safe with exception handling
+machine.OnError += (sender, args) => { };
+await machine.TryTransmit<LockState>(new StateMachineEvent());
 
+```
+
+### Event publishing with Post
+
+```csharp
+
+// Posts an event to the current status
 await machine.Post(new StateMachineEvent());
+
+// Safe posting
+await machine.TryPost(new StateMachineEvent());
 
 ```
 
@@ -115,8 +133,10 @@ internal class LockState
 
 ### Solution Packages
 
-#### Package:
- No Packages required
+|Package|Dependencies|
+|-|-|
+|BlackMali.StateMachine|No|
+|BlackMali.StateMachine.Autofac|Autofac|
 
 #### Unit-Tests:
 - XUnit
