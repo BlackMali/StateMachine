@@ -4,8 +4,8 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Description>Simple state machine with DI and async support</Description>
-    <PackageTags>statemachine;autofac</PackageTags>
+    <Description>Autofac package for state machines with async pattern (.net Standard 2.0 and .net 6)</Description>
+    <PackageTags>statemachine;autofac;blackmali</PackageTags>
     <BaseOutputPath>..\..\bin</BaseOutputPath>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\BlackMali.StateMachine.Private.snk</AssemblyOriginatorKeyFile>
@@ -22,7 +22,7 @@
     <DocumentationFile>..\..\bin\BlackMali.StateMachine.xml</DocumentationFile>
     <PackageIcon>blackmali.jpg</PackageIcon>
     <Version>$(AssemblyVersion)</Version>
-    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSymbols>True</IncludeSymbols>    
   </PropertyGroup>
   <PropertyGroup>
     <MinVerTagPrefix>v</MinVerTagPrefix>
@@ -49,7 +49,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlackMali.StateMachine\BlackMali.StateMachine.csproj" />
+    <ProjectReference Include="..\BlackMali.StateMachine\BlackMali.StateMachine.csproj"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="4.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>

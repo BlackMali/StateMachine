@@ -3,8 +3,8 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Description>Simple state machine with DI and async support</Description>
-    <PackageTags>statemachine</PackageTags>
+    <Description>State machine with DI support and async pattern (.net Standard 2.0 and .net 6)</Description>
+    <PackageTags>statemachine;blackmali</PackageTags>
     <BaseOutputPath>..\..\bin</BaseOutputPath>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\BlackMali.StateMachine.Private.snk</AssemblyOriginatorKeyFile>

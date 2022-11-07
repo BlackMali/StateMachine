@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/blackmali/statemachine)
 [![NuGet](https://img.shields.io/nuget/dt/BlackMali.StateMachine.svg)](https://www.nuget.org/packages/BlackMali.StateMachine) 
 
-Simple state machine implementation in C# (.NET Standard 2.0 & .NET 6).
+State machine implementation in C# (.NET Standard 2.0 & .NET 6).
 
 **Advantages:**
 - DI ready

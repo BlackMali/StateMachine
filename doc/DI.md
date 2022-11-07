@@ -6,7 +6,10 @@ Only Autofac can currently be used for DI. If you need additional DI support, ju
 
 ### How to use
 
-- Install Autofac
+- Install BlackMali.StateMachine.Autofac with NuGet:
+	
+	dotnet add package BlackMali.StateMachine.Autofac
+
 - Register StateMachineModule
 - Resolve IStateMachineBuilder
 - Build your StateMachine
