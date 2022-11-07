@@ -7,6 +7,13 @@ namespace BlackMali.StateMachine.AutoFac
 	/// </summary>
 	public class StateMachineModule : Module
 	{
+		/// <summary>
+		/// Behavior for state change validation
+		/// 
+		/// <code>true</code> = <see cref="StrictStateChangeInspector"/> and <code>false</code> = <see cref="StateChangeInspector"/>
+		/// </summary>
+		public bool UseStrictMode { get; set; } = true;
+
 		/// <inheritdoc/>
 		protected override void Load(ContainerBuilder builder)
 		{
@@ -18,8 +25,8 @@ namespace BlackMali.StateMachine.AutoFac
 				.As<IStateProvider>();
 			builder.RegisterType<StateMachineBuilder>()
 				.As<IStateMachineBuilder>();
-			builder.RegisterType<StrictStateChangeInspector>()
-				.As<IStateChangeInspector>();
+
+			RegisterInspector(builder);
 
 			builder.Register<StateMachineServiceFactory>(outerContext =>
 				{
@@ -27,6 +34,24 @@ namespace BlackMali.StateMachine.AutoFac
 
 					return serviceType => innerContext.Resolve(serviceType);
 				});
+		}
+
+		/// <summary>
+		/// Register the configured state change inspector
+		/// </summary>
+		/// <param name="builder">Autofac Container Builder</param>
+		private void RegisterInspector(ContainerBuilder builder)
+		{
+			if (UseStrictMode)
+			{
+				builder.RegisterType<StrictStateChangeInspector>()
+					.As<IStateChangeInspector>();
+
+				return;
+			}
+
+			builder.RegisterType<StateChangeInspector>()
+					.As<IStateChangeInspector>();
 		}
 	}
 }
