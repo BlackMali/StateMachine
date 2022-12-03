@@ -20,12 +20,12 @@ State machine implementation in C#.
 
 ### Compatible target frameworks
 
-|Product|Version|
-|_|_|
-|.NET Framework| `.net 4.6.x` `.net 4.7.x` `.net 4.8.x` |
-|.NET Standard| `.net standard 2.x` |
-|.NET Core| `.net Core app 2.x` `.net core app 3.x` |
-|.NET| `.net 5` `.net 6` `.net 7` |
+|	Product		|				Version						|
+|---------------|-------------------------------------------|
+|.NET Framework	| `.net 4.6.x` `.net 4.7.x` `.net 4.8.x`	|
+|.NET Standard	| `.net standard 2.x`						|
+|.NET Core		| `.net Core app 2.x` `.net core app 3.x`	|
+|.NET			| `.net 5` `.net 6` `.net 7`				|
 
 ## NuGet
 
