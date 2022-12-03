@@ -5,17 +5,27 @@
 ![GitHub](https://img.shields.io/github/license/blackmali/statemachine)
 [![NuGet](https://img.shields.io/nuget/dt/BlackMali.StateMachine.svg)](https://www.nuget.org/packages/BlackMali.StateMachine) 
 
-State machine implementation in C# (.NET Standard 2.0 & .NET 6).
+State machine implementation in C#.
 
-**Advantages:**
+## Advantages:
 - DI ready
 - Async Pattern
 - Safe programming with nullable types
+- No dependencies on third-party Nuget packages
 - Works without constants and enums
 - Builder for state machine creation
 - Configuration of states and transitions
 - Strict (default) and open transitions
 - more than 95% code coverage
+
+### Compatible target frameworks
+
+|Product|Version|
+|_|_|
+|.NET Framework| `.net 4.6.x` `.net 4.7.x` `.net 4.8.x` |
+|.NET Standard| `.net standard 2.x` |
+|.NET Core| `.net Core app 2.x` `.net core app 3.x` |
+|.NET| `.net 5` `.net 6` `.net 7` |
 
 ## NuGet
 
