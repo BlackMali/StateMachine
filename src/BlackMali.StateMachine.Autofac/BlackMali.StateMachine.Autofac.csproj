@@ -5,7 +5,7 @@
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <Description>Autofac package for state machines with async pattern (.net Standard 2.0 and .net 6)</Description>
-    <PackageTags>statemachine;autofac;blackmali</PackageTags>
+    <PackageTags>statemachine;autofac;blackmali;state-machine;states;fsm;finite-state-machine</PackageTags>
     <BaseOutputPath>..\..\bin</BaseOutputPath>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\BlackMali.StateMachine.Private.snk</AssemblyOriginatorKeyFile>
