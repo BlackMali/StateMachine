@@ -11,7 +11,6 @@ State machine implementation in C#.
 - DI ready
 - Async Pattern
 - Safe programming with nullable types
-- No dependencies on third-party Nuget packages
 - Works without constants and enums
 - Builder for state machine creation
 - Configuration of states and transitions
