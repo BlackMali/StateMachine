@@ -83,7 +83,7 @@ await _stateMachine.Transmit<LockState>();
 await _stateMachine.Transmit<LockState>(new StateMachineEvent());
 
 // Or safe with exception handling
-machine.OnError += (sender, args) => { };
+_stateMachine.OnError += (sender, args) => { };
 await _stateMachine.TryTransmit<LockState>(new StateMachineEvent());
 
 ```
