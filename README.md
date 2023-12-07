@@ -24,7 +24,7 @@ State machine implementation in C#.
 |.NET Framework	| `.net 4.6.x` `.net 4.7.x` `.net 4.8.x`	|
 |.NET Standard	| `.net standard 2.x`						|
 |.NET Core		| `.net Core app 2.x` `.net core app 3.x`	|
-|.NET			| `.net 5` `.net 6` `.net 7`				|
+|.NET			| `.net 5` `.net 6` `.net 7` `.net 8`		|
 
 ## NuGet
 
@@ -41,6 +41,7 @@ Or via the .NET Core command line interface:
 ```csharp
 var builder = new ContainerBuilder();
 builder.RegisterModule<StateMachineModule>();
+builder.RegisterType<LockState>().AsSelf();
 ```
 
 ## Configuration
@@ -52,14 +53,14 @@ public class SlotMachine
 
 	public SlotMachine(IStateMachineBuilder builder)
 	{
-		// With registration -> AddState<LockState>()
+		// With DI registration -> AddState<LockState>()
 		builder.AddState<LockState>()
 			.AddStartTransition();
 			.AddInStateTransition()
 			.AddTransition<UnLockState>()
 			.AddTransition<EndState>();
 
-		// Without registration -> AddState(new UnLockState())
+		// Without DI registration -> AddState(new UnLockState())
 		builder.AddState(new UnLockState())
 			.AddInStateTransition()
 			.AddTransition<LockState>()
@@ -76,14 +77,14 @@ public class SlotMachine
 ```csharp
 
 // Perform state change
-await machine.Transmit<LockState>();
+await _stateMachine.Transmit<LockState>();
 
 // Or with Event
-await machine.Transmit<LockState>(new StateMachineEvent());
+await _stateMachine.Transmit<LockState>(new StateMachineEvent());
 
 // Or safe with exception handling
 machine.OnError += (sender, args) => { };
-await machine.TryTransmit<LockState>(new StateMachineEvent());
+await _stateMachine.TryTransmit<LockState>(new StateMachineEvent());
 
 ```
 
@@ -92,10 +93,10 @@ await machine.TryTransmit<LockState>(new StateMachineEvent());
 ```csharp
 
 // Posts an event to the current status
-await machine.Post(new StateMachineEvent());
+await _stateMachine.Post(new StateMachineEvent());
 
 // Safe posting
-await machine.TryPost(new StateMachineEvent());
+await _stateMachine.TryPost(new StateMachineEvent());
 
 ```
 
