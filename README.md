@@ -24,7 +24,7 @@ State machine implementation in C#.
 |.NET Framework	| `.net 4.6.x` `.net 4.7.x` `.net 4.8.x`	|
 |.NET Standard	| `.net standard 2.x`						|
 |.NET Core		| `.net Core app 2.x` `.net core app 3.x`	|
-|.NET			| `.net 5` `.net 6` `.net 7` `.net 8`		|
+|.NET			| `.net 8` `.net 10`		|
 
 ## NuGet
 
@@ -156,7 +156,7 @@ internal class LockState
 - Coverlet.Collector
 
 ### IDE
-Implemented with Microsoft Visual Studio Community 2022
+Implemented with Microsoft Visual Studio Community 2026
 
 - [Markdown Editor](https://github.com/MadsKristensen/MarkdownEditor2022)
 - [Fine Code Coverage](https://marketplace.visualstudio.com/items?itemName=FortuneNgwenya.FineCodeCoverage)
